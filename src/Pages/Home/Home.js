@@ -3,6 +3,8 @@ import useTools from '../../hooks/useTools';
 import Banner from './Banner';
 import Product from '../Products/Product';
 import { useNavigate } from "react-router-dom";
+import BusinessSummary from './BusinessSummary';
+import WhyPrefer from './WhyPrefer';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -20,8 +22,10 @@ const Home = () => {
                     ></Product>).slice(0, 6)
                 }
             </div>
-            <button onClick={() => navigate('/products')} className='btn flex justify-center mx-auto px-3 mt-3
+            <button onClick={() => navigate('/products')} className='btn flex justify-center mx-auto px-3 my-3
             '>Show All Tools</button>
+            <BusinessSummary></BusinessSummary>
+            <WhyPrefer></WhyPrefer>
         </div>
     );
 };
