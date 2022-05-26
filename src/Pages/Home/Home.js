@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import BusinessSummary from './BusinessSummary';
 import WhyPrefer from './WhyPrefer';
 import Review from '../Reviews/Review';
+import ContactUs from '../ContactUs/ContactUs';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -42,6 +43,7 @@ const Home = () => {
             <button onClick={() => navigate('/reviews')} className='btn flex justify-center mx-auto px-3 my-3
             '>View All Reviews</button>
             <WhyPrefer></WhyPrefer>
+            <ContactUs></ContactUs>
         </div>
     );
 };
