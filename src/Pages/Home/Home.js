@@ -1,5 +1,6 @@
 import React from 'react';
 import useTools from '../../hooks/useTools';
+import useReviews from '../../hooks/useReviews';
 import Banner from './Banner';
 import Product from '../Products/Product';
 import { useNavigate } from "react-router-dom";
@@ -9,6 +10,7 @@ import WhyPrefer from './WhyPrefer';
 const Home = () => {
     const navigate = useNavigate();
     const [tools, setTools] = useTools();
+    const [reviews, setReviews] = useReviews();
 
     return (
         <div>
