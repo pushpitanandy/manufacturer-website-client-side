@@ -6,7 +6,7 @@ const WhyPrefer = () => {
     return (
         <div>
             <h2 className="text-4xl text-center font-extrabold m-10">WHY PREFER <span className='text-primary'>BD TOOLS</span></h2>
-            <div className="m-10 grid grid-cols-6 gap-6 text-center">
+            <div className="m-10 grid grid-cols-1 lg:grid-cols-6 gap-6 text-center">
                 <div>
                     <div className="text-primary p-2">
                         <FontAwesomeIcon icon={faSyncAlt} size="4x" />

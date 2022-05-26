@@ -6,7 +6,7 @@ const BusinessSummary = () => {
     return (
         <div>
             <h2 className="text-5xl text-center font-extrabold m-10">Businesses trust <span className='text-primary'>BD TOOLS</span></h2>
-            <div className="m-10 grid grid-cols-4 gap-6 text-center">
+            <div className="m-10 grid grid-cols-1 lg:grid-cols-4 gap-6 text-center">
                 <div>
                     <div className="text-primary p-2">
                         <FontAwesomeIcon icon={faFlag} size="4x" />
