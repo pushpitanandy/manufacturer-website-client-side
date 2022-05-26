@@ -20,7 +20,8 @@ const Home = () => {
                     ></Product>).slice(0, 6)
                 }
             </div>
-            <button onClick={() => navigate('/products')} className='btn btn-yellow-800'>Show All Tools</button>
+            <button onClick={() => navigate('/products')} className='btn flex justify-center mx-auto px-3 mt-3
+            '>Show All Tools</button>
         </div>
     );
 };
