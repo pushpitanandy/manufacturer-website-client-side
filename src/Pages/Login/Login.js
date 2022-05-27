@@ -1,31 +1,40 @@
 import React from 'react';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithGoogle, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import { useForm } from "react-hook-form";
 
 const Login = () => {
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
-    const onSubmit = data =>
+    const onSubmit = data => {
         console.log(data);
-
-    let errorElement;
-    if (error) {
-
-        errorElement = <p className='text-danger'>Error: {error.message}</p>
+        signInWithEmailAndPassword(data.email, data.password);
     }
 
-    if (user) {
+    let errorElement;
+    if (error || gerror) {
+
+        errorElement = <p className='text-red-700'>Error: {error?.message || gerror?.message}</p>
+    }
+
+    if (user || guser) {
         navigate(from, { replace: true });
     }
 
-    if (loading) {
+    if (loading || gloading) {
         return <Loading></Loading>
     }
     return (
@@ -84,10 +93,11 @@ const Login = () => {
                                 {errors.password?.type === 'minLength' && <span class="label-text-alt text-red-700">{errors.password.message}</span>}
                             </label>
                         </div>
-
+                        {errorElement}
 
                         <input className='btn w-full max-w-xs' type="submit" value='Login' />
                     </form>
+                    <p>New to BD Tools? <Link to='/register' className='text-primary'>Create New Account</Link></p>
                     <div className="divider">OR</div>
                     <button
                         onClick={() => signInWithGoogle()}

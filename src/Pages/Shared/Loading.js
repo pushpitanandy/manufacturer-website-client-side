@@ -2,8 +2,8 @@ import React from 'react';
 
 const Loading = () => {
     return (
-        <div>
-            <progress class="progress w-56"></progress>
+        <div className='h-screen flex justify-center items-center'>
+            <button className='btn loading'>Loading</button>
         </div>
     );
 };
