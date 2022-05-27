@@ -3,7 +3,7 @@ import auth from '../../firebase.init';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import { useForm } from "react-hook-form";
-import { useSignInWithGoogle, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithGoogle, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 
 const Register = () => {
 
@@ -14,28 +14,31 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
-    const onSubmit = data => {
-        console.log(data);
+    const onSubmit = async data => {
+
         createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName: data.name });
+        navigate(from, { replace: true });
     }
 
     let errorElement;
-    if (error || gerror) {
+    if (error || gerror || updateError) {
 
-        errorElement = <p className='text-red-700'>Error: {error?.message || gerror?.message}</p>
+        errorElement = <p className='text-red-700'>Error: {error?.message || gerror?.message || updateError?.message}</p>
     }
 
     if (user || guser) {
         navigate(from, { replace: true });
     }
 
-    if (loading || gloading) {
+    if (loading || gloading || updating) {
         return <Loading></Loading>
     }
 
