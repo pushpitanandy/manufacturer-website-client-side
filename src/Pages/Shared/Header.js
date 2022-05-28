@@ -20,6 +20,11 @@ const Header = () => {
         <li><Link to="/blogs">Blogs</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/contactUs">Contact Us</Link></li>
+        {
+            user && <>
+                <li><Link to="/dashboard">Dashboard</Link></li>
+            </>
+        }
     </>
     return (
 
@@ -31,6 +36,7 @@ const Header = () => {
                     </label>
                     <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         {menuItems}
+
                     </ul>
                 </div>
                 <Link to="/" className="btn btn-ghost normal-case text-2xl"><img src={toolIcon} alt='' /> BD Tools</Link>
