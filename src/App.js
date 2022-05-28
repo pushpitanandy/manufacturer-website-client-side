@@ -10,7 +10,9 @@ import Header from './Pages/Shared/Header';
 import NotFound from './Pages/Shared/NotFound';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Login/Register';
-
+import Purchase from './Pages/Products/Purchase';
+import RequireAuth from './Pages/RequireAuth/RequireAuth';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -20,6 +22,10 @@ function App() {
         <Route path='/' element={<Home />}></Route>
         <Route path='/about' element={<About />}></Route>
         <Route path='/products' element={<Products></Products>}></Route>
+        <Route path='/products/:productId' element={
+          <RequireAuth>
+            <Purchase></Purchase>
+          </RequireAuth>}></Route>
         <Route path='/reviews' element={<Reviews></Reviews>}></Route>
         <Route path='/contactUs' element={<ContactUs></ContactUs>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
@@ -27,6 +33,7 @@ function App() {
         <Route path='/*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }

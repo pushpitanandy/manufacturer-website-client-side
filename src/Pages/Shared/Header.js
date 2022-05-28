@@ -41,7 +41,13 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {user ? <button className='btn btn-ghost' onClick={logOut}>Sign Out</button> : <Link to="/login" className="btn">Login</Link>}
+                {user ?
+                    <div className='flex items-center'>
+                        <h6 className='text-lg font-bold'>{user.displayName}</h6>
+                        <button className='btn btn-ghost' onClick={logOut}>Sign Out</button>
+                    </div>
+                    :
+                    <Link to="/login" className="btn">Login</Link>}
             </div>
         </div>
 
