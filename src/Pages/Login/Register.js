@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import { useForm } from "react-hook-form";
 import { useSignInWithGoogle, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import useToken from '../../hooks/useToken';
 
 const Register = () => {
 
@@ -16,16 +17,20 @@ const Register = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
+    const [token] = useToken(user || guser);
+
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
-    const onSubmit = async data => {
 
+
+    const onSubmit = async data => {
+        console.log(data);
         createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
-        navigate(from, { replace: true });
+
     }
 
     let errorElement;
@@ -34,8 +39,9 @@ const Register = () => {
         errorElement = <p className='text-red-700'>Error: {error?.message || gerror?.message || updateError?.message}</p>
     }
 
-    if (user || guser) {
+    if (token) {
         navigate(from, { replace: true });
+
     }
 
     if (loading || gloading || updating) {
