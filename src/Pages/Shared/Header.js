@@ -50,7 +50,7 @@ const Header = () => {
             <div className="navbar-end">
                 {user ?
                     <div className='flex items-center'>
-                        <h6 className='text-lg font-bold'>{user.displayName}</h6>
+                        <h6 className='text-lg font-bold'>{user.displayName || user.auth.displayName}</h6>
                         <button className='btn btn-ghost' onClick={logOut}>Sign Out</button>
                     </div>
                     :
