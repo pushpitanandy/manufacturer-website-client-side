@@ -28,8 +28,17 @@ const Register = () => {
 
     const onSubmit = async data => {
         console.log(data);
-        createUserWithEmailAndPassword(data.email, data.password);
-        await updateProfile({ displayName: data.name });
+        const email = data.email;
+        const password = data.password;
+        const name = data.name;
+        createUserWithEmailAndPassword(email, password);
+        const user = auth().currentUser;
+        user.updateProfile({ displayName: name }).then(function () {
+            // Update successful.}).catch(function(error) {  // An error happened.}); 
+            console.log("Updated");
+        }, function (error) {
+            console.log("Error happened");
+        });
 
     }
 

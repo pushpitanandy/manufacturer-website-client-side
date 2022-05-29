@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const Purchase = () => {
     const { productId } = useParams();
@@ -84,7 +84,7 @@ const Purchase = () => {
                             <input type="number" name='quantity' defaultValue={tool.minOrderQuantity} min={tool.minOrderQuantity} max={tool.availableQuantity} className="input input-bordered w-full max-w-xs py-2" />
                             <input type="submit" value='Purchase' className="btn btn-secondary w-full max-w-xs py-2" />
                         </form>
-                        <ToastContainer />
+
                     </div>
                 </div>
             </div>
