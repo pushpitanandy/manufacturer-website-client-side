@@ -19,12 +19,15 @@ const Purchase = () => {
 
     const handlePurchase = event => {
         event.preventDefault();
+        const pricePerPiece = tool.price;
+        const totalPrice = parseInt(pricePerPiece) * parseInt(event.target.quantity.value);
         const data = {
-            name: user.displayName,
+            name: user.displayName || user.auth.displayName,
             email: user.email,
             address: event.target.address.value,
             phone: event.target.phone.value,
             tool: tool.name,
+            price: totalPrice,
             quantity: event.target.quantity.value
         }
         console.log(data);
@@ -76,11 +79,13 @@ const Purchase = () => {
                         <h4 className='text-2xl font-bold text-lime-800'>Price: ${tool.price}/piece</h4>
                         <p className='py-6 text-lg'>Fill up the following details:</p>
                         <form onSubmit={handlePurchase} className='grid grid-cols-1 gap-3 mb-5'>
-                            <input type="text" name='name' disabled value={user.displayName} className="input input-bordered w-full max-w-xs py-2" />
+                            <input type="text" name='name' disabled value={user.displayName || user.auth.displayName} className="input input-bordered w-full max-w-xs py-2" />
                             <input type="text" name='email' disabled value={user.email} className="input input-bordered w-full max-w-xs py-2" />
                             <input type="text" name='address' placeholder="Type your Address" className="input input-bordered w-full max-w-xs py-2" />
                             <input type="text" name='phone' placeholder="Enter Phone Number" className="input input-bordered w-full max-w-xs py-2" />
                             <input type="text" name='tool' disabled value={tool.name} className="input input-bordered w-full max-w-xs py-2" />
+                            <p>Price/piece:</p>
+                            <input type="text" name='pricePerPiece' disabled value={tool.price} className="input input-bordered w-full max-w-xs py-2" />
                             <input type="number" name='quantity' defaultValue={tool.minOrderQuantity} min={tool.minOrderQuantity} max={tool.availableQuantity} className="input input-bordered w-full max-w-xs py-2" />
                             <input type="submit" value='Purchase' className="btn btn-secondary w-full max-w-xs py-2" />
                         </form>

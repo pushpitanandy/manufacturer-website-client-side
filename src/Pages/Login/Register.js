@@ -32,13 +32,7 @@ const Register = () => {
         const password = data.password;
         const name = data.name;
         createUserWithEmailAndPassword(email, password);
-        const user = auth().currentUser;
-        user.updateProfile({ displayName: name }).then(function () {
-            // Update successful.}).catch(function(error) {  // An error happened.}); 
-            console.log("Updated");
-        }, function (error) {
-            console.log("Error happened");
-        });
+        user.auth.displayName = name;
 
     }
 
