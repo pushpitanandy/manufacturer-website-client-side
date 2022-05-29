@@ -16,7 +16,7 @@ const MyProfile = () => {
         }
         console.log(data);
 
-        const url = `http://localhost:5000/user/${user.email}`;
+        const url = `https://pacific-beyond-64387.herokuapp.com/user/${user.email}`;
         fetch(url, {
             method: 'PUT',
             headers: {

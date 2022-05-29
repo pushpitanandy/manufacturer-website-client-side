@@ -11,7 +11,7 @@ const Purchase = () => {
     const [isReload, setIsReload] = useState(true);
 
     useEffect(() => {
-        const url = `http://localhost:5000/tool/${productId}`;
+        const url = `https://pacific-beyond-64387.herokuapp.com/tool/${productId}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setTool(data));
@@ -36,7 +36,7 @@ const Purchase = () => {
         tool.availableQuantity = newAvailableQuantity;
         setTool(tool);
 
-        const url = `http://localhost:5000/tool/${productId}`;
+        const url = `https://pacific-beyond-64387.herokuapp.com/tool/${productId}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -51,7 +51,7 @@ const Purchase = () => {
             });
 
         //adding the order in the orderCollection of database
-        const urlOrder = 'http://localhost:5000/order';
+        const urlOrder = 'https://pacific-beyond-64387.herokuapp.com/order';
         fetch(urlOrder, {
             method: 'POST',
             headers: {

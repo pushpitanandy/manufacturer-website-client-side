@@ -13,7 +13,7 @@ const AddProduct = () => {
             minOrderQuantity: event.target.minOrderQuantity.value,
             image: event.target.image.value
         }
-        const url = 'http://localhost:5000/tool';
+        const url = 'https://pacific-beyond-64387.herokuapp.com/tool';
         fetch(url, {
             method: 'POST',
             headers: {

@@ -13,7 +13,7 @@ const AddaReview = () => {
             review: event.target.review.value,
             rating: event.target.rating.value
         }
-        const url = 'http://localhost:5000/review';
+        const url = 'https://pacific-beyond-64387.herokuapp.com/review';
         fetch(url, {
             method: 'POST',
             headers: {
