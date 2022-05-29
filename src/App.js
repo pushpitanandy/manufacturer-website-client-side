@@ -17,7 +17,8 @@ import MyOrders from './Pages/Dashboard/MyOrders';
 import AddaReview from './Pages/Dashboard/AddaReview';
 import MyProfile from './Pages/Dashboard/MyProfile';
 import Users from './Pages/Dashboard/Users';
-
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -47,7 +48,7 @@ function App() {
         <Route path='/*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
-
+      <ToastContainer />
     </div>
   );
 }
