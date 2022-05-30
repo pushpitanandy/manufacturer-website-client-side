@@ -22,7 +22,7 @@ const Purchase = () => {
         const pricePerPiece = tool.price;
         const totalPrice = parseInt(pricePerPiece) * parseInt(event.target.quantity.value);
         const data = {
-            name: user.displayName || user.auth.displayName,
+            name: event.target.name.value,
             email: user.email,
             address: event.target.address.value,
             phone: event.target.phone.value,
@@ -79,7 +79,7 @@ const Purchase = () => {
                         <h4 className='text-2xl font-bold text-lime-800'>Price: ${tool.price}/piece</h4>
                         <p className='py-6 text-lg'>Fill up the following details:</p>
                         <form onSubmit={handlePurchase} className='grid grid-cols-1 gap-3 mb-5'>
-                            <input type="text" name='name' disabled value={user.displayName || user.auth.displayName} className="input input-bordered w-full max-w-xs py-2" />
+                            <input type="text" name='name' defaultvalue={user.displayName || user.auth.displayName} className="input input-bordered w-full max-w-xs py-2" />
                             <input type="text" name='email' disabled value={user.email} className="input input-bordered w-full max-w-xs py-2" />
                             <input type="text" name='address' placeholder="Type your Address" className="input input-bordered w-full max-w-xs py-2" />
                             <input type="text" name='phone' placeholder="Enter Phone Number" className="input input-bordered w-full max-w-xs py-2" />
