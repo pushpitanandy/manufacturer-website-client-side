@@ -18,7 +18,6 @@ const Users = () => {
             <h2 className='text-2xl'>All Users</h2>
             <div class="overflow-x-auto">
                 <table class="table w-full">
-
                     <thead>
                         <tr>
                             <th>Email</th>
@@ -34,8 +33,6 @@ const Users = () => {
                                 refetch={refetch}
                             ></UserRow>)
                         }
-
-
                     </tbody>
                 </table>
             </div>

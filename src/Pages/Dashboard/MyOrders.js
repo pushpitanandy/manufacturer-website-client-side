@@ -65,7 +65,7 @@ const MyOrders = () => {
                     <tbody>
                         {
                             orders.map(order =>
-                                <tr>
+                                <tr key={order._id}>
                                     <td>{order.name}</td>
                                     <td>{order.address}</td>
                                     <td>{order.phone}</td>
@@ -73,9 +73,12 @@ const MyOrders = () => {
                                     <td>{order.quantity}</td>
                                     <td>
                                         {(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>}
-                                        {(order.price && order.paid) && <span className='text-success'>Paid</span>
+                                        {(order.price && order.paid) && <div>
+                                            <span className='text-success'>Paid</span>
+                                            <p>Transaction Id: <span className='text-success'>{order.transactionId}</span></p>
+                                        </div>
                                         }</td>
-                                    <td><button onClick={() => handleDelete(order._id)}>X</button></td>
+                                    <td>{!order.paid && <button onClick={() => handleDelete(order._id)}>X</button>}</td>
                                 </tr>
                             )
                         }
