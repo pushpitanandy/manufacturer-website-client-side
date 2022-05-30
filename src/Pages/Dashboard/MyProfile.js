@@ -34,6 +34,9 @@ const MyProfile = () => {
     return (
         <div>
             <h2 classsName='text-4xl text-primary'>Update My Profile</h2>
+            <p className='text-2xl'>Name: {user.displayName}</p>
+            <p className='text-xl'>Email: {user.email}</p>
+            <p>Please fill in the details:</p>
             <form onSubmit={handleUpdateProfile} className='grid grid-cols-1 gap-3 mb-5'>
                 <input type="text" name='name' defaultvalue={user.displayName} className="input input-bordered w-full max-w-xs py-2" />
                 <input type="text" name='email' disabled value={user.email} className="input input-bordered w-full max-w-xs py-2" />
